@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import com.sun.javafx.scene.control.skin.IntegerField?>
+<?import javafx.scene.control.TextArea?>
+<VBox fx:id="mainBox" stylesheets="/stylesheet.css" xmlns="http://javafx.com/javafx/8.0.112"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.griddynamics.controller.UserInterfaceController">
+
+    <VBox minHeight="80">
+    </VBox>
+
+    <HBox alignment="CENTER_LEFT">
+        <padding>
+            <Insets left="50"/>
+        </padding>
+        <Label prefWidth="100" styleClass="balLab" text="Balance: "/>
+        <Label fx:id="balanceLabel" prefWidth="100" styleClass="balLab"/>
+    </HBox>
+
+    <VBox>
+        <HBox spacing="5">
+            <Button fx:id="putMonBut" maxWidth="Infinity" prefHeight="20" prefWidth="50" styleClass="myBtnLog"
+                    onAction="#putMoney">Put
+            </Button>
+            <TextField fx:id="moneySumF" maxWidth="150" prefHeight="30" promptText="Sum for operating"/>
+            <Button fx:id="takeMonBut" maxWidth="Infinity" prefHeight="20" prefWidth="50" styleClass="myBtnReg"
+                    onAction="#getMoney">Take
+            </Button>
+            <padding>
+                <Insets bottom="10.0" top="5"/>
+            </padding>
+        </HBox>
+        <HBox>
+            <padding>
+                <Insets left="75.0"/>
+            </padding>
+            <Label wrapText="true" maxHeight="100" fx:id="result" maxWidth="150" styleClass="label"
+                   text="You can put or take money (100, 200, 1000, etc). Any summ that can be divided in 100 hunky "/>
+        </HBox>
+        <HBox>
+            <padding>
+                <Insets left="100" top="50.0"/>
+            </padding>
+        <Button alignment="CENTER" fx:id="logOffBut" prefHeight="20" prefWidth="70" styleClass="myBtnLogOFF"
+                onAction="#logOffSystem">LogOFF
+        </Button>
+        </HBox>
+        <padding>
+            <Insets bottom="10.0" left="5" right="5.0" top="5.0"/>
+        </padding>
+    </VBox>
+
+</VBox>
