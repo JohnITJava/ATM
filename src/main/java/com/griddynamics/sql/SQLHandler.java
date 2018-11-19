@@ -22,6 +22,17 @@ public class SQLHandler {
     private static String DBPath = "jdbc:sqlite:atm.db";
     private static String testDBPath = "jdbc:sqlite:atm_test.db";
 
+    private static SQLHandler instance;
+
+    private SQLHandler() {}
+
+    public static SQLHandler getInstance() {
+        if (instance == null){
+            connect();
+            instance = new SQLHandler();
+        }
+        return instance;
+    }
 
     /**
      * Create connection to origin DB
@@ -43,7 +54,7 @@ public class SQLHandler {
     public static void connectToTestDB() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:atm_test.db");
+            connection = DriverManager.getConnection(testDBPath);
             connection.setAutoCommit(false);
             connection.setSavepoint();
             stmt = connection.createStatement();
@@ -81,11 +92,6 @@ public class SQLHandler {
             if (rs.next()) {
                 return true;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

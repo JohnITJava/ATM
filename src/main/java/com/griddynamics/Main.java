@@ -1,5 +1,6 @@
 package com.griddynamics;
 
+import com.griddynamics.sql.SQLHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +24,9 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
+        ShutdownHook shutdownHook = new ShutdownHook();
+        Runtime.getRuntime().addShutdownHook(shutdownHook);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/auth.fxml"));
 
         Parent root = (Pane) loader.load();
@@ -37,8 +41,15 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    private class ShutdownHook extends Thread {
+        public void run() {
+            SQLHandler.disconnect();
+        }
+    }
+
 
     public static void main(String[] args) {
+        SQLHandler.getInstance();
         launch(args);
     }
 }

@@ -99,7 +99,6 @@ public class AdminInterfaceController implements Initializable {
      * And set authorization flag in false
      */
     public void logOffSystem() throws IOException {
-        SQLHandler.disconnect();
         AuthController.setAuthorized(false);
         changeSceneToAuth();
     }

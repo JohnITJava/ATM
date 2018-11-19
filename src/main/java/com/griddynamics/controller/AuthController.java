@@ -89,7 +89,6 @@ public class AuthController implements Initializable {
      * and further switching to right gui interface.
      */
     public void tryToLogin() throws IOException {
-        SQLHandler.connect();
 
         name = logF.getText();
         pass = pasF.getText();
